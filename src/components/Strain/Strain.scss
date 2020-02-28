@@ -1,0 +1,13 @@
+.strain-card {
+  border: 2px solid black;
+  height: 50px;
+  padding: 0.5em;
+  width: 90%;
+}
+
+.strain-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+  width: 100%;
+}
