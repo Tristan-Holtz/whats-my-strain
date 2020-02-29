@@ -1,0 +1,27 @@
+// * {
+//   border: 1px solid red;
+// }
+
+.strain-details_section {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.strain-info_card {
+  display: flex;
+}
+
+.strain-info_container {
+  margin-left: 2em;
+}
+
+.strain-pic {
+  border: 1px solid black;
+  height: 300px;
+  width: 300px;
+}
+
+.trait-container {
+  display: flex;
+}
