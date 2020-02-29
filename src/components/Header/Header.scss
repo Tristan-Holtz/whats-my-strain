@@ -1,0 +1,21 @@
+header {
+  border-bottom: 5px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+h1 {
+  margin-left: 5em;
+}
+
+.username {
+  padding: 1em;
+}
+
+.nav-options {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  width: 20em;
+}

@@ -5,6 +5,7 @@ import CardContainer from '../CardContainer/CardContainer';
 import Login from '../Login/Login.js';
 import Header from '../Header/Header';
 import Strain from '../Strain/Strain';
+import StrainDetails from '../StrainDetails/StrainDetails';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         </Switch>
         <Route exact path="/" component={CardContainer} />
         <Route exact path="/strains" component={Strain} />
+        <Route exact path="/strainDetails" component={StrainDetails} />
       </body>
     </Router>
   );

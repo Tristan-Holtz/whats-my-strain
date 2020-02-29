@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Strain from '../Strain/Strain';
 import { connect } from 'react-redux';
-import { setStrains } from '../../actions';
+import { setStrains, setCategory } from '../../actions';
+import './CardContainer.scss';
 import { Link } from 'react-router-dom';
 
 export class CardContainer extends Component {
@@ -16,22 +16,39 @@ export class CardContainer extends Component {
       .catch(error => console.log(error));
   };
 
+  selectCategory = category => {
+    this.props.setCategory(category);
+  };
+
   render() {
     return (
       <form className="strain-selection_form">
         <section className="types-section">
           <label>Select a type:</label>
           <div className="type-buttons_div">
-            <Link className="type-button" to="/strains">
+            <button
+              onClick={() => this.selectCategory('sativa')}
+              type="button"
+              className="type-button"
+            >
               SATIVA
-            </Link>
-            <Link className="type-button" to="/strains">
+            </button>
+            <button
+              onClick={() => this.selectCategory('hybrid')}
+              type="button"
+              className="type-button"
+            >
               HYBRID
-            </Link>
-            <Link className="type-button" to="/strains">
+            </button>
+            <button
+              onClick={() => this.selectCategory('indica')}
+              type="button"
+              className="type-button"
+            >
               INDICA
-            </Link>
+            </button>
           </div>
+          <Link to="/strains">See Strains</Link>
         </section>
       </form>
     );
@@ -41,6 +58,9 @@ export class CardContainer extends Component {
 export const mapDispatchToProps = dispatch => ({
   setStrains: strains => {
     dispatch(setStrains(strains));
+  },
+  setCategory: category => {
+    dispatch(setCategory(category));
   }
 });
 
