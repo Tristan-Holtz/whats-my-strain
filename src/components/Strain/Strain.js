@@ -5,21 +5,29 @@ import { Link } from 'react-router-dom';
 import { setUniqueStrain } from '../../actions';
 
 const Strain = ({ setUniqueStrain, strains, category }) => {
-  const getUniqueStrain = name => {
-    setUniqueStrain(name);
+  const getUniqueStrain = strain => {
+    setUniqueStrain(strain);
   };
 
-  let strainNames = Object.keys(strains);
-  strainNames = strainNames.filter(name => strains[name].race === category);
+  const strainNames = Object.keys(strains);
+  const uniqueStrains = strainNames.reduce((acc, name) => {
+    if (strains[name].race === category) {
+      acc.push({
+        name: name,
+        ...strains[name]
+      });
+    }
+    return acc;
+  }, []);
 
-  const cards = strainNames.map(name => {
+  const cards = uniqueStrains.map(strain => {
     return (
       <Link
-        onClick={() => getUniqueStrain(name)}
-        to="/strainDetails"
+        onClick={() => getUniqueStrain(strain)}
+        to={`/strain-details/${strain.name}`}
         className="strain-card"
       >
-        <p className="strain-name">{name}</p>
+        <p className="strain-name">{strain.name}</p>
       </Link>
     );
   });

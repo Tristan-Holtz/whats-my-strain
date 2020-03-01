@@ -8,7 +8,22 @@ export const setCategory = category => ({
   category
 });
 
-export const setUniqueStrain = name => ({
+export const setUniqueStrain = strain => ({
   type: 'SET_UNIQUE',
+  strain
+});
+
+export const addToMyStrains = strain => ({
+  type: 'ADD_FAVORITE',
+  strain
+});
+
+export const setUser = name => ({
+  type: 'SET_USER',
   name
+});
+
+export const addToNotForMe = strain => ({
+  type: 'SET_DISLIKE',
+  strain
 });
