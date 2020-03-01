@@ -33,7 +33,7 @@ export class Login extends Component {
           name="name"
           placeholder="Name"
         ></input>
-        <Link onClick={this.loginUser} to="/">
+        <Link className="login-link" onClick={this.loginUser} to="/">
           Login
         </Link>
       </form>
@@ -41,14 +41,10 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user
-});
-
 const mapDispatchToProps = dispatch => ({
   setUser: user => {
     dispatch(setUser(user));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

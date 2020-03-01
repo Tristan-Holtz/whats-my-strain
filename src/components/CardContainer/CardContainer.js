@@ -26,7 +26,7 @@ export class CardContainer extends Component {
     return (
       <form className="strain-selection_form">
         <section className="types-section">
-          <label>Select a type:</label>
+          <label className="type-label">Select a type:</label>
           <div className="type-buttons_div">
             <button
               onClick={() => this.selectCategory('sativa')}
