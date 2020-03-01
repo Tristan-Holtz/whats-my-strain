@@ -14,60 +14,39 @@ const Strain = ({
   const getUniqueStrain = strain => {
     setUniqueStrain(strain);
   };
-  let cards;
-  switch (category) {
-    case 'favorites':
-      cards = myStrains.map(strain => {
-        return (
-          <Link
-            onClick={() => getUniqueStrain(strain)}
-            to={`/strain-details/${strain.name}`}
-            className="strain-card"
-          >
-            <p className="strain-name">{strain.name}</p>
-          </Link>
-        );
-      });
-      return <section className="strain-container">{cards}</section>;
-    case 'dislikes':
-      cards = notForMe.map(strain => {
-        return (
-          <Link
-            onClick={() => getUniqueStrain(strain)}
-            to={`/strain-details/${strain.name}`}
-            className="strain-card"
-          >
-            <p className="strain-name">{strain.name}</p>
-          </Link>
-        );
-      });
-      return <section className="strain-container">{cards}</section>;
-    default:
-      const strainNames = Object.keys(strains);
-      const uniqueStrains = strainNames.reduce((acc, name) => {
-        if (strains[name].race === category) {
-          acc.push({
-            name: name,
-            ...strains[name]
-          });
-        }
-        return acc;
-      }, []);
+  const strainsToDisplay = () => {
+    switch (category) {
+      case 'favorites':
+        return myStrains;
+      case 'dislikes':
+        return notForMe;
+      default:
+        const strainNames = Object.keys(strains);
+        return strainNames.reduce((acc, name) => {
+          if (strains[name].race === category) {
+            acc.push({
+              name: name,
+              ...strains[name]
+            });
+          }
+          return acc;
+        }, []);
+    }
+  };
 
-      cards = uniqueStrains.map(strain => {
-        return (
-          <Link
-            onClick={() => getUniqueStrain(strain)}
-            to={`/strain-details/${strain.name}`}
-            className="strain-card"
-          >
-            <p className="strain-name">{strain.name}</p>
-          </Link>
-        );
-      });
+  const cards = strainsToDisplay().map(strain => {
+    return (
+      <Link
+        onClick={() => getUniqueStrain(strain)}
+        to={`/strain-details/${strain.name}`}
+        className="strain-card"
+      >
+        <p className="strain-name">{strain.name}</p>
+      </Link>
+    );
+  });
 
-      return <section className="strain-container">{cards}</section>;
-  }
+  return <section className="strain-container">{cards}</section>;
 };
 
 export const mapStateToProps = state => ({

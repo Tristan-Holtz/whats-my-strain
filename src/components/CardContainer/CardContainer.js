@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setStrains, setCategory } from '../../actions';
 import './CardContainer.scss';
-import { Link } from 'react-router-dom';
+import Strain from '../Strain/Strain';
 
 export class CardContainer extends Component {
   componentDidMount() {
@@ -24,35 +24,37 @@ export class CardContainer extends Component {
 
   render() {
     return (
-      <form className="strain-selection_form">
-        <section className="types-section">
-          <label className="type-label">Select a type:</label>
-          <div className="type-buttons_div">
-            <button
-              onClick={() => this.selectCategory('sativa')}
-              type="button"
-              className="type-button"
-            >
-              SATIVA
-            </button>
-            <button
-              onClick={() => this.selectCategory('hybrid')}
-              type="button"
-              className="type-button"
-            >
-              HYBRID
-            </button>
-            <button
-              onClick={() => this.selectCategory('indica')}
-              type="button"
-              className="type-button"
-            >
-              INDICA
-            </button>
-          </div>
-          <Link to="/strains">See Strains</Link>
-        </section>
-      </form>
+      <main>
+        <form className="strain-selection_form">
+          <section className="types-section">
+            <label className="type-label">Select a type:</label>
+            <div className="type-buttons_div">
+              <button
+                onClick={() => this.selectCategory('sativa')}
+                type="button"
+                className="type-button"
+              >
+                SATIVA
+              </button>
+              <button
+                onClick={() => this.selectCategory('hybrid')}
+                type="button"
+                className="type-button"
+              >
+                HYBRID
+              </button>
+              <button
+                onClick={() => this.selectCategory('indica')}
+                type="button"
+                className="type-button"
+              >
+                INDICA
+              </button>
+            </div>
+          </section>
+        </form>
+        <Strain />
+      </main>
     );
   }
 }

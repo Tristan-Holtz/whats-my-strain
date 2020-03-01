@@ -12,14 +12,14 @@ const Header = ({ user, setCategory }) => {
       <div className="nav-options">
         <Link
           className="nav-link"
-          to="/strains"
+          to="/"
           onClick={() => setCategory('favorites')}
         >
           My Strains
         </Link>
         <Link
           className="nav-link"
-          to="/strains"
+          to="/"
           onClick={() => setCategory('dislikes')}
         >
           Not For Me
