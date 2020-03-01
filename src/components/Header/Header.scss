@@ -1,4 +1,5 @@
 header {
+  background-color: #fff;
   border-bottom: 5px solid black;
   display: flex;
   justify-content: space-between;
@@ -6,7 +7,7 @@ header {
 }
 
 h1 {
-  margin-left: 5em;
+  margin-left: 10em;
 }
 
 .username {
@@ -18,4 +19,9 @@ h1 {
   justify-content: space-between;
   padding: 1em;
   width: 20em;
+}
+
+.nav-link {
+  color: black;
+  text-decoration: none;
 }

@@ -56,6 +56,18 @@ class StrainDetails extends Component {
     }
   }
 
+  addToFavorites = strain => {
+    strain.favorite = true;
+    this.props.addToMyStrains(strain);
+    // const stringifiedStrain = JSON.stringify(strain);
+    // localStorage.setItem(this.props.user.name, stringifiedStrain);
+  };
+
+  addToDislikes = strain => {
+    strain.dislike = true;
+    this.props.addToNotForMe(strain);
+  };
+
   render() {
     const { strainInfo } = this.state;
     const { uniqueStrain } = this.props;
@@ -102,14 +114,14 @@ class StrainDetails extends Component {
           </div>
           <p>{strainInfo.desc}</p>
           <button
-            onClick={() => this.props.addToMyStrains(strainInfo)}
+            onClick={() => this.addToFavorites(strainInfo)}
             type="button"
             className="add-favorite"
           >
             Add To My Strains
           </button>
           <button
-            onClick={this.props.addToNotForMe(strainInfo)}
+            onClick={() => this.addToDislikes(strainInfo)}
             type="button"
             className="add-dislike"
           >
@@ -153,14 +165,14 @@ class StrainDetails extends Component {
             </article>
           </div>
           <button
-            onClick={() => this.props.addToMyStrains(uniqueStrain)}
+            onClick={() => this.addToFavorites(uniqueStrain)}
             type="button"
             className="add-favorite"
           >
             Add To My Strains
           </button>
           <button
-            onClick={this.props.addToNotForMe(uniqueStrain)}
+            onClick={() => this.addToDislikes(uniqueStrain)}
             type="button"
             className="add-dislike"
           >
@@ -175,7 +187,8 @@ class StrainDetails extends Component {
 
 export const mapStateToProps = state => ({
   uniqueStrain: state.uniqueStrain,
-  strains: state.strains
+  strains: state.strains,
+  user: state.user
 });
 
 export const mapDispatchToProps = dispatch => ({
