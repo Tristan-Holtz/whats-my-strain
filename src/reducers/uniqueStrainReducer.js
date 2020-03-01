@@ -1,7 +1,7 @@
-const uniqueStrainReducer = (state = '', action) => {
+const uniqueStrainReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_UNIQUE':
-      return action.name;
+      return action.strain;
     default:
       return state;
   }

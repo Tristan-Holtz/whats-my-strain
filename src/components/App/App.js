@@ -10,15 +10,13 @@ import StrainDetails from '../StrainDetails/StrainDetails';
 const App = () => {
   return (
     <Router>
-      <body>
-        <Switch>
-          <Route path="/" component={Header} />
-          <Route exact path="/login" component={Login} />
-        </Switch>
-        <Route exact path="/" component={CardContainer} />
-        <Route exact path="/strains" component={Strain} />
-        <Route exact path="/strainDetails" component={StrainDetails} />
-      </body>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route path="/" component={Header} />
+      </Switch>
+      <Route exact path="/" component={CardContainer} />
+      <Route exact path="/strains" component={Strain} />
+      <Route exact path="/strain-details/:name" component={StrainDetails} />
     </Router>
   );
 };

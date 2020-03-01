@@ -10,7 +10,9 @@ export class CardContainer extends Component {
   }
 
   getStrainInfo = () => {
-    fetch('https://strainapi.evanbusse.com/ZKe6ZXO/strains/search/all')
+    fetch(
+      `https://strainapi.evanbusse.com/${process.env.REACT_APP_API_KEY}/strains/search/all`
+    )
       .then(response => response.json())
       .then(strains => this.props.setStrains(strains))
       .catch(error => console.log(error));
