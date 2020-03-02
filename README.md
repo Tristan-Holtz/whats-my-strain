@@ -35,3 +35,4 @@ What's My Strain is an app designed to help Medical Marijuana patients as well a
 
 Main page of the app
 <img width="1431" src="./src/images/app-screenshot.png" alt='App main page screen shot'>
+<img width="1431" src="./src/images/strain-details-screenshot.png" alt='Strain details screen shot'>
