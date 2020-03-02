@@ -1,7 +1,3 @@
-// * {
-//   border: 1px solid red;
-// }
-
 .strain-details_section {
   color: #fff;
   display: flex;
@@ -14,11 +10,14 @@
 }
 
 .strain-info_container {
+  background-color: #284d6b;
   margin-left: 2em;
+  padding: 2em;
+  width: 70%;
 }
 
 .strain-pic {
-  border: 1px solid black;
+  border: 1px solid #fff;
   height: 300px;
   width: 300px;
 }

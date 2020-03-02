@@ -9,6 +9,7 @@ import {
 } from '../../actions';
 import './CardContainer.scss';
 import Strain from '../Strain/Strain';
+import PropTypes from 'prop-types';
 
 export class CardContainer extends Component {
   constructor() {
@@ -62,13 +63,19 @@ export class CardContainer extends Component {
   render() {
     if (this.props.effects.positive) {
       const positives = this.props.effects.positive.map(effect => (
-        <option value={`positive_${effect}`}>{effect}</option>
+        <option key={effect} value={`positive_${effect}`}>
+          {effect}
+        </option>
       ));
       const negatives = this.props.effects.negative.map(effect => (
-        <option value={`negative_${effect}`}>{effect}</option>
+        <option key={effect} value={`negative_${effect}`}>
+          {effect}
+        </option>
       ));
       const medical = this.props.effects.medical.map(effect => (
-        <option value={`medical_${effect}`}>{effect}</option>
+        <option key={effect} value={`medical_${effect}`}>
+          {effect}
+        </option>
       ));
 
       return (
@@ -189,5 +196,21 @@ export const mapStateToProps = state => ({
   effects: state.effects,
   category: state.category
 });
+
+CardContainer.propTypes = {
+  getStrainInfo: PropTypes.func,
+  selectCategory: PropTypes.func,
+  sendUniqueEffect: PropTypes.func,
+  setSearchStrain: PropTypes.func,
+  handleChange: PropTypes.func,
+  strains: PropTypes.object,
+  effects: PropTypes.object,
+  category: PropTypes.string,
+  setUniqueStrain: PropTypes.func,
+  setUniqueEffect: PropTypes.func,
+  setEffects: PropTypes.func,
+  setCategory: PropTypes.func,
+  setStrains: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

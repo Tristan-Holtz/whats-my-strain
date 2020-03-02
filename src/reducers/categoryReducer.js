@@ -1,4 +1,4 @@
-const strainsReducer = (state = '', action) => {
+const categoryReducer = (state = '', action) => {
   switch (action.type) {
     case 'SET_CATEGORY':
       return action.category;
@@ -7,4 +7,4 @@ const strainsReducer = (state = '', action) => {
   }
 };
 
-export default strainsReducer;
+export default categoryReducer;
