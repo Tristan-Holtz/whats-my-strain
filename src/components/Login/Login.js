@@ -44,7 +44,7 @@ export class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setUser: name => {
     dispatch(setUser(name));
   }

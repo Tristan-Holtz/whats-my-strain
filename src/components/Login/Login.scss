@@ -4,7 +4,9 @@
 }
 
 .login-form {
-  background-color: #fff;
+  border: 3px solid #fff;
+  border-radius: 2em;
+  background-color: #284d6b;
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -19,8 +21,12 @@
   }
 }
 
+.login-link {
+  color: #fff;
+}
+
 .login-title {
-  color: black;
+  color: #fff;
   margin: 0;
 }
 

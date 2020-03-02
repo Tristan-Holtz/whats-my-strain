@@ -4,18 +4,20 @@ import './Strain.scss';
 import { Link } from 'react-router-dom';
 import { setUniqueStrain } from '../../actions';
 
-const Strain = ({
+export const Strain = ({
   setUniqueStrain,
   strains,
   category,
   myStrains,
   notForMe,
-  effects,
-  uniqueEffect
+  uniqueEffect,
+  uniqueStrain
 }) => {
   const getUniqueStrain = strain => {
     setUniqueStrain(strain);
   };
+
+  let area = 'All Strains';
 
   const strainsToDisplay = () => {
     const strainNames = Object.keys(strains);
@@ -26,7 +28,12 @@ const Strain = ({
       });
       return acc;
     }, []);
+    if (typeof uniqueStrain === 'string') {
+      allStrains = allStrains.filter(strain => strain.name === uniqueStrain);
+      area = uniqueStrain;
+    }
     if (category) {
+      area = category;
       switch (category) {
         case 'favorites':
           return myStrains;
@@ -40,6 +47,7 @@ const Strain = ({
       const splitEffect = uniqueEffect.split('_');
       const effectType = splitEffect[0];
       const effectName = splitEffect[1];
+      area = effectName;
       allStrains = allStrains.filter(strain =>
         strain.effects[effectType].includes(effectName)
       );
@@ -50,6 +58,7 @@ const Strain = ({
   const cards = strainsToDisplay().map(strain => {
     return (
       <Link
+        key={strain.id}
         onClick={() => getUniqueStrain(strain)}
         to={`/strain-details/${strain.name}`}
         className="strain-card"
@@ -60,9 +69,9 @@ const Strain = ({
   });
 
   return (
-    <section className="strain-container">
-      {/* <h2>{}</h2> */}
-      {cards}
+    <section>
+      <h2 className="area">{area}</h2>
+      <section className="strain-container">{cards}</section>
     </section>
   );
 };
@@ -73,7 +82,6 @@ export const mapStateToProps = state => ({
   uniqueStrain: state.uniqueStrain,
   myStrains: state.myStrains,
   notForMe: state.notForMe,
-  effects: state.effects,
   uniqueEffect: state.uniqueEffect
 });
 

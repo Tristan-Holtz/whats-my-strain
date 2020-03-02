@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCategory } from '../../actions';
 
-const Header = ({ name, setCategory }) => {
+export const Header = ({ name, setCategory }) => {
   return (
     <header>
       <p className="username">{name ? `Welcome, ${name}` : ''}</p>
       <h1>What's My Strain?</h1>
       <div className="nav-options">
         <Link
-          className="nav-link"
+          className="favorites-link nav-link"
           to="/"
           onClick={() => setCategory('favorites')}
         >
@@ -32,11 +32,11 @@ const Header = ({ name, setCategory }) => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   name: state.name
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setCategory: category => {
     dispatch(setCategory(category));
   }

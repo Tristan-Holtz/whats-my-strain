@@ -50,14 +50,14 @@ describe('CardContainer', () => {
   });
 
   describe('handleChange', () => {
-    it('should should be able to set name in state', () => {
+    it('should should be able to set uniqueEffect in state', () => {
       const mockEvent = {
         target: {
           value: 'Happy'
         }
       };
 
-      wrapper.instance().handleChange(mockEvent);
+      wrapper.instance().sendUniqueEffect(mockEvent);
       expect(mockProps.setUniqueEffect).toHaveBeenCalledWith('Happy');
     });
   });
@@ -96,7 +96,7 @@ describe('CardContainer', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('should call dispatch with setUniqueEffect when handleChange is called', () => {
+    it('should call dispatch with setUniqueEffect when sendUniqueEffect is called', () => {
       const actionToDispatch = setUniqueEffect('Hungry');
 
       mappedProps.setUniqueEffect('Hungry');
