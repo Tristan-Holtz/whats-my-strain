@@ -9,6 +9,10 @@
   display: flex;
 }
 
+.strain-desc {
+  padding: 1.5em;
+}
+
 .strain-info_container {
   background-color: #284d6b;
   margin-left: 2em;
@@ -42,6 +46,7 @@
 .likes-button {
   border-radius: 5px;
   color: #fff;
+  cursor: pointer;
   font-size: 20px;
   height: 30px;
   width: 400px;
