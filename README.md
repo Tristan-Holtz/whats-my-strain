@@ -1,10 +1,10 @@
-![rt-logo](https://user-images.githubusercontent.com/46171611/75307065-0419be00-5808-11ea-8b0b-b86b2828705f.png)
+# What's My Strain?
 
-Collaborators: [Kyle Cornelissen](https://github.com/kylecornelissen/), [Tristan Holtz](https://github.com/Tristan-Holtz/), [Ryan Novak](https://github.com/ryan-novak)
+Collaborators: [Tristan Holtz](https://github.com/Tristan-Holtz/)
 
-### About Rancid Tomatoes
+### About What's My Strain?
 
-Rancid Tomatoes is a project building an application for users to sign in and rate movies. The application features fetch calls to a back end API and Redux magic featuring React components and front end testing using Jest and Enzyme. The project took about a week and all the team members ended up great friends in the end.
+What's My Strain is an app designed to help Medical Marijuana patients as well as cannabis enthusiasts that want to keep track of which strains they are able to use to their benefit and which strains they should avoid in the future. It uses an API to make fetch calls to a back end API and Redux featuring React components and front end testing using Jest and Enzyme, the project took about 5 days.
 
 ### Learning Goals
 
@@ -16,8 +16,6 @@ Rancid Tomatoes is a project building an application for users to sign in and ra
 - Test Redux functions
 
 ### Production Link
-
-https://rancid-tomatoes.herokuapp.com/
 
 ### Setup
 
@@ -34,7 +32,5 @@ https://rancid-tomatoes.herokuapp.com/
 - HTML / CSS
 
 ### Screenshots
-
-![Screen Shot 2020-02-25 at 8](https://user-images.githubusercontent.com/46171611/75309390-2adaf300-580e-11ea-99ac-2235fb9a2d9d.png)
 
 <img width="1431" src="./src/images/app-screenshot.png" alt='App main page screen shot'>
