@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './StrainDetails.scss';
 import { connect } from 'react-redux';
 import { addToMyStrains, addToNotForMe } from '../../actions';
-import '../../images/hybrid.jpg';
-import '../../images/sativa.jpg';
-import '../../images/indica.jpg';
+import hybrid from '../../images/hybrid.jpg';
+import sativa from '../../images/sativa.jpg';
+import indica from '../../images/indica.jpg';
 
 export class StrainDetails extends Component {
   state = {
@@ -81,9 +81,19 @@ export class StrainDetails extends Component {
   };
 
   render() {
+    let strainPic;
     const { strainInfo } = this.state;
     const { uniqueStrain } = this.props;
     if (strainInfo.flavors && strainInfo.id && strainInfo.effects) {
+      if (strainInfo.race === 'sativa') {
+        strainPic = sativa;
+      }
+      if (strainInfo.race === 'hybrid') {
+        strainPic = hybrid;
+      }
+      if (strainInfo.race === 'indica') {
+        strainPic = indica;
+      }
       const { name } = this.props.match.params;
       const flavors = strainInfo.flavors.map(flavor => `${flavor},  `);
       const positives = strainInfo.effects.positive.map(
@@ -98,11 +108,7 @@ export class StrainDetails extends Component {
         <section className="strain-details_section">
           <h2>{name}</h2>
           <div className="strain-info_card">
-            <img
-              className="strain-pic"
-              src={`../../images/${race}.jpg`}
-              alt={`${race} plant`}
-            />
+            <img className="strain-pic" src={strainPic} alt={`${race} plant`} />
             <article className="strain-info_container">
               <div className="trait-container">
                 <label>Type:</label>
@@ -147,6 +153,15 @@ export class StrainDetails extends Component {
         </section>
       );
     } else if (uniqueStrain.name) {
+      if (uniqueStrain.race === 'sativa') {
+        strainPic = sativa;
+      }
+      if (uniqueStrain.race === 'hybrid') {
+        strainPic = hybrid;
+      }
+      if (uniqueStrain.race === 'indica') {
+        strainPic = indica;
+      }
       const { name, race, effects } = uniqueStrain;
       const flavors = uniqueStrain.flavors.map(flavor => `${flavor},  `);
       const positives = effects.positive.map(effect => `${effect},  `);
@@ -156,11 +171,7 @@ export class StrainDetails extends Component {
         <section className="strain-details_section">
           <h2>{name}</h2>
           <div className="strain-info_card">
-            <img
-              className="strain-pic"
-              src={`../../images/${race}.jpg`}
-              alt={`${race} plant`}
-            />
+            <img className="strain-pic" src={strainPic} alt={`${race} plant`} />
             <article className="strain-info_container">
               <div className="trait-container">
                 <label>Type:</label>
