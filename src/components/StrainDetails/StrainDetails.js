@@ -80,15 +80,7 @@ export class StrainDetails extends Component {
   render() {
     const { strainInfo } = this.state;
     const { uniqueStrain } = this.props;
-    let strainPic;
     if (strainInfo.flavors && strainInfo.id && strainInfo.effects) {
-      if (strainInfo.race === 'sativa') {
-        strainPic = '../../images/sativa.jpg';
-      } else if (strainInfo.race === 'indica') {
-        strainPic = '../../images/indica.jpg';
-      } else if (strainInfo.race === 'hybrid') {
-        strainPic = '../../images/hybrid.jpg';
-      }
       const { name } = this.props.match.params;
       const flavors = strainInfo.flavors.map(flavor => `${flavor},  `);
       const positives = strainInfo.effects.positive.map(
@@ -103,7 +95,11 @@ export class StrainDetails extends Component {
         <section className="strain-details_section">
           <h2>{name}</h2>
           <div className="strain-info_card">
-            <img className="strain-pic" src={strainPic} alt="" />
+            <img
+              className="strain-pic"
+              src={`../../images/${race}`}
+              alt={`${race} plant`}
+            />
             <article className="strain-info_container">
               <div className="trait-container">
                 <label>Type:</label>
@@ -148,24 +144,20 @@ export class StrainDetails extends Component {
         </section>
       );
     } else if (uniqueStrain.name) {
-      if (uniqueStrain.race === 'sativa') {
-        strainPic = '../../images/sativa.jpg';
-      } else if (uniqueStrain.race === 'indica') {
-        strainPic = '../../images/indica.jpg';
-      } else if (uniqueStrain.race === 'hybrid') {
-        strainPic = '../../images/hybrid.jpg';
-      }
       const { name, race, effects } = uniqueStrain;
       const flavors = uniqueStrain.flavors.map(flavor => `${flavor},  `);
       const positives = effects.positive.map(effect => `${effect},  `);
       const negatives = effects.negative.map(effect => `${effect},  `);
       const medical = effects.medical.map(effect => `${effect},  `);
-      console.log(strainPic);
       return (
         <section className="strain-details_section">
           <h2>{name}</h2>
           <div className="strain-info_card">
-            <img className="strain-pic" src={strainPic} alt={`${race} plant`} />
+            <img
+              className="strain-pic"
+              src={`../../images/${race}`}
+              alt={`${race} plant`}
+            />
             <article className="strain-info_container">
               <div className="trait-container">
                 <label>Type:</label>
