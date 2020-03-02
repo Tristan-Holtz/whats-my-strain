@@ -169,7 +169,7 @@ export class CardContainer extends Component {
         </main>
       );
     }
-    return null;
+    return <h2 className="loading-message">Loading...</h2>;
   }
 }
 
