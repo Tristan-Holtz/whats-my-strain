@@ -4,12 +4,19 @@ import {
   setStrains,
   setCategory,
   setEffects,
-  setUniqueEffect
+  setUniqueEffect,
+  setUniqueStrain
 } from '../../actions';
 import './CardContainer.scss';
 import Strain from '../Strain/Strain';
 
 export class CardContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      search: ''
+    };
+  }
   componentDidMount() {
     this.getStrainInfo();
   }
@@ -33,12 +40,23 @@ export class CardContainer extends Component {
     this.props.setCategory(category);
   };
 
-  getEffects = effect => {
-    this.props.setCategory(effect);
+  sendUniqueEffect = event => {
+    this.props.setUniqueEffect(event.target.value);
+  };
+
+  setSearchStrain = () => {
+    if (this.state.search) {
+      this.props.setUniqueStrain(this.state.search);
+      this.props.setUniqueEffect('');
+      this.props.setCategory('');
+      this.setState({ search: '' });
+    }
+    this.setState({ search: '' });
+    this.props.setUniqueStrain(this.state.search);
   };
 
   handleChange = event => {
-    this.props.setUniqueEffect(event.target.value);
+    this.setState({ search: event.target.value });
   };
 
   render() {
@@ -52,10 +70,26 @@ export class CardContainer extends Component {
       const medical = this.props.effects.medical.map(effect => (
         <option value={`medical_${effect}`}>{effect}</option>
       ));
+
       return (
         <main>
           <form className="strain-selection_form">
             <section className="types-section">
+              <label>Search By Name:</label>
+              <div className="search-container">
+                <input
+                  onChange={this.handleChange}
+                  className="search-input"
+                  placeholder="Strain Name..."
+                ></input>
+                <button
+                  onClick={() => this.setSearchStrain()}
+                  className="search-button"
+                  type="button"
+                >
+                  Search
+                </button>
+              </div>
               <label className="type-label">Select a type:</label>
               <div className="type-buttons_div">
                 <button
@@ -88,7 +122,7 @@ export class CardContainer extends Component {
                 <select
                   className="trait-dropdown"
                   name="positives"
-                  onChange={this.handleChange}
+                  onChange={this.sendUniqueEffect}
                 >
                   <option disabled selected value="">
                     select a trait
@@ -97,11 +131,11 @@ export class CardContainer extends Component {
                 </select>
               </div>
               <div className="effect-dropdown_div">
-                <label htmlFor="negatives">Positives</label>
+                <label htmlFor="negatives">Negatives</label>
                 <select
                   className="trait-dropdown"
                   name="negatives"
-                  onChange={this.handleChange}
+                  onChange={this.sendUniqueEffect}
                 >
                   <option disabled selected value="">
                     select a trait
@@ -110,11 +144,11 @@ export class CardContainer extends Component {
                 </select>
               </div>
               <div className="effect-dropdown_div">
-                <label htmlFor="medical">Positives</label>
+                <label htmlFor="medical">Helps With</label>
                 <select
                   className="trait-dropdown"
                   name="medical"
-                  onChange={this.handleChange}
+                  onChange={this.sendUniqueEffect}
                 >
                   <option disabled selected value="">
                     select a trait
@@ -144,6 +178,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   setUniqueEffect: effect => {
     dispatch(setUniqueEffect(effect));
+  },
+  setUniqueStrain: strain => {
+    dispatch(setUniqueStrain(strain));
   }
 });
 

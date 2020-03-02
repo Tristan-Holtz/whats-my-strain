@@ -1,5 +1,6 @@
 .type-button {
   border-radius: 15px;
+  cursor: pointer;
   height: 60px;
   font-size: 30px;
   width: 330px;
@@ -17,7 +18,9 @@
 }
 
 .trait-dropdown {
-  height: 30px;
+  cursor: pointer;
+  height: 2em;
+  margin-left: 1em;
   width: 250px;
 }
 
@@ -25,4 +28,31 @@
   display: flex;
   justify-content: space-around;
   padding: 1em;
+}
+
+.search-container {
+  border-bottom: 2px solid green;
+  display: flex;
+  height: 2.3em;
+  padding: 2em;
+  padding-left: 3em;
+}
+
+.search-input {
+  border-radius: 5px 0 0 5px;
+  height: 2.5em;
+  padding: 0.25em;
+  width: 250px;
+}
+
+.search-button {
+  background-color: #284d6b;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  height: 100%;
+}
+
+label {
+  color: #fff;
 }

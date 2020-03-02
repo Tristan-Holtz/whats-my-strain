@@ -3,7 +3,7 @@ import './StrainDetails.scss';
 import { connect } from 'react-redux';
 import { addToMyStrains, addToNotForMe } from '../../actions';
 
-class StrainDetails extends Component {
+export class StrainDetails extends Component {
   state = {
     strainInfo: {},
     desc: ''
@@ -66,15 +66,15 @@ class StrainDetails extends Component {
   }
 
   addToFavorites = strain => {
-    // strain.favorite = true;
-    this.props.addToMyStrains(strain);
-    // const stringifiedStrain = JSON.stringify(strain);
-    // localStorage.setItem(this.props.user.name, stringifiedStrain);
+    if (!this.props.myStrains.includes(strain)) {
+      this.props.addToMyStrains(strain);
+    }
   };
 
   addToDislikes = strain => {
-    // strain.dislike = true;
-    this.props.addToNotForMe(strain);
+    if (!this.props.notForMe.includes(strain)) {
+      this.props.addToNotForMe(strain);
+    }
   };
 
   render() {
@@ -202,7 +202,9 @@ class StrainDetails extends Component {
 export const mapStateToProps = state => ({
   uniqueStrain: state.uniqueStrain,
   strains: state.strains,
-  user: state.user
+  user: state.user,
+  myStrains: state.myStrains,
+  notForMe: state.notForMe
 });
 
 export const mapDispatchToProps = dispatch => ({
