@@ -33,10 +33,6 @@ export class CardContainer extends Component {
     this.props.setCategory(category);
   };
 
-  getEffects = effect => {
-    this.props.setCategory(effect);
-  };
-
   handleChange = event => {
     this.props.setUniqueEffect(event.target.value);
   };
