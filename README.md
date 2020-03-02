@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![rt-logo](https://user-images.githubusercontent.com/46171611/75307065-0419be00-5808-11ea-8b0b-b86b2828705f.png)
 
-## Available Scripts
+Collaborators: [Kyle Cornelissen](https://github.com/kylecornelissen/), [Tristan Holtz](https://github.com/Tristan-Holtz/), [Ryan Novak](https://github.com/ryan-novak)
 
-In the project directory, you can run:
+### About Rancid Tomatoes
 
-### `npm start`
+Rancid Tomatoes is a project building an application for users to sign in and rate movies. The application features fetch calls to a back end API and Redux magic featuring React components and front end testing using Jest and Enzyme. The project took about a week and all the team members ended up great friends in the end.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Learning Goals
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Reinforce React fundamentals
+- Reinforce using React Router to create a multi-page user experience
+- Reinforce component and asynchronous JS testing
+- Work with and navigate a shared, persistent API using GET, POST, and DELETE requests
+- Implement Redux as the app’s place to store shared state
+- Test Redux functions
 
-### `npm test`
+### Production Link
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://rancid-tomatoes.herokuapp.com/
 
-### `npm run build`
+### Setup
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Fork or clone down this repo
+1. In your terminal, run `npm i`
+1. Run `npm start` and use your browser to navigate the app
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Stack/Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Redux
+- JavaScript / JSX
+- Jest / Enzyme
+- HTML / CSS
 
-### `npm run eject`
+### Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Screen Shot 2020-02-25 at 8](https://user-images.githubusercontent.com/46171611/75309390-2adaf300-580e-11ea-99ac-2235fb9a2d9d.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<img width="1431" src="./src/images/app-screenshot.png" alt='App main page screen shot'>

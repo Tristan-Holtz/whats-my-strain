@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './StrainDetails.scss';
 import { connect } from 'react-redux';
 import { addToMyStrains, addToNotForMe } from '../../actions';
+import '../../images/hybrid.jpg';
+import '../../images/sativa.jpg';
+import '../../images/indica.jpg';
 
 export class StrainDetails extends Component {
   state = {
@@ -97,7 +100,7 @@ export class StrainDetails extends Component {
           <div className="strain-info_card">
             <img
               className="strain-pic"
-              src={`../../images/${race}`}
+              src={`../../images/${race}.jpg`}
               alt={`${race} plant`}
             />
             <article className="strain-info_container">
@@ -124,7 +127,7 @@ export class StrainDetails extends Component {
               </div>
             </article>
           </div>
-          <p>{strainInfo.desc}</p>
+          <p className="strain-desc">{strainInfo.desc}</p>
           <div className="likes-container">
             <button
               onClick={() => this.addToFavorites(strainInfo)}
@@ -155,7 +158,7 @@ export class StrainDetails extends Component {
           <div className="strain-info_card">
             <img
               className="strain-pic"
-              src={`../../images/${race}`}
+              src={`../../images/${race}.jpg`}
               alt={`${race} plant`}
             />
             <article className="strain-info_container">
