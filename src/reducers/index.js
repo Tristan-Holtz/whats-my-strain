@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   uniqueStrain: uniqueStrainReducer,
   myStrains: favoritesReducer,
-  user: userReducer,
+  name: userReducer,
   notForMe: dislikeReducer,
   effects: effectsReducer,
   uniqueEffect: uniqueEffectReducer

@@ -81,7 +81,7 @@ export class CardContainer extends Component {
                 </button>
               </div>
             </section>
-            <label className="type-label">Select a type:</label>
+            <label className="trait-label">Select a trait:</label>
             <section className="effects-section">
               <div className="effect-dropdown_div">
                 <label htmlFor="positives">Positives</label>

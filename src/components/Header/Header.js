@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCategory } from '../../actions';
 
-const Header = ({ user, setCategory }) => {
+const Header = ({ name, setCategory }) => {
   return (
     <header>
-      <p className="username">{user ? `Welcome, ${user}` : ''}</p>
+      <p className="username">{name ? `Welcome, ${name}` : ''}</p>
       <h1>What's My Strain?</h1>
       <div className="nav-options">
         <Link
@@ -25,7 +25,7 @@ const Header = ({ user, setCategory }) => {
           Not For Me
         </Link>
         <Link className="nav-link" to="/login">
-          {user ? 'Logout' : 'Login'}
+          {name ? 'Logout' : 'Login'}
         </Link>
       </div>
     </header>
@@ -33,7 +33,7 @@ const Header = ({ user, setCategory }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  name: state.name
 });
 
 const mapDispatchToProps = dispatch => ({
