@@ -1,6 +1,6 @@
 # What's My Strain?
 
-Collaborators: [Tristan Holtz](https://github.com/Tristan-Holtz/)
+Author: [Tristan Holtz](https://github.com/Tristan-Holtz/)
 
 ### About What's My Strain?
 
@@ -35,4 +35,5 @@ What's My Strain is an app designed to help Medical Marijuana patients as well a
 
 Main page of the app
 <img width="1431" src="./src/images/app-screenshot.png" alt='App main page screen shot'>
+Strain details page
 <img width="1431" src="./src/images/strain-details-screenshot.png" alt='Strain details screen shot'>
