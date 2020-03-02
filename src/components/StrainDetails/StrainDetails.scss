@@ -26,3 +26,24 @@
 .trait-container {
   display: flex;
 }
+
+.likes-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-favorite {
+  background-color: green;
+}
+
+.add-dislike {
+  background-color: red;
+}
+
+.likes-button {
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  height: 30px;
+  width: 400px;
+}

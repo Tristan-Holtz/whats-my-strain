@@ -9,29 +9,42 @@ const Strain = ({
   strains,
   category,
   myStrains,
-  notForMe
+  notForMe,
+  effects,
+  uniqueEffect
 }) => {
   const getUniqueStrain = strain => {
     setUniqueStrain(strain);
   };
+
   const strainsToDisplay = () => {
-    switch (category) {
-      case 'favorites':
-        return myStrains;
-      case 'dislikes':
-        return notForMe;
-      default:
-        const strainNames = Object.keys(strains);
-        return strainNames.reduce((acc, name) => {
-          if (strains[name].race === category) {
-            acc.push({
-              name: name,
-              ...strains[name]
-            });
-          }
-          return acc;
-        }, []);
+    const strainNames = Object.keys(strains);
+    let allStrains = strainNames.reduce((acc, name) => {
+      acc.push({
+        name,
+        ...strains[name]
+      });
+      return acc;
+    }, []);
+    if (category) {
+      switch (category) {
+        case 'favorites':
+          return myStrains;
+        case 'dislikes':
+          return notForMe;
+        default:
+          allStrains = allStrains.filter(strain => strain.race === category);
+      }
     }
+    if (uniqueEffect) {
+      const splitEffect = uniqueEffect.split('_');
+      const effectType = splitEffect[0];
+      const effectName = splitEffect[1];
+      allStrains = allStrains.filter(strain =>
+        strain.effects[effectType].includes(effectName)
+      );
+    }
+    return allStrains;
   };
 
   const cards = strainsToDisplay().map(strain => {
@@ -46,7 +59,12 @@ const Strain = ({
     );
   });
 
-  return <section className="strain-container">{cards}</section>;
+  return (
+    <section className="strain-container">
+      {/* <h2>{}</h2> */}
+      {cards}
+    </section>
+  );
 };
 
 export const mapStateToProps = state => ({
@@ -54,7 +72,9 @@ export const mapStateToProps = state => ({
   category: state.category,
   uniqueStrain: state.uniqueStrain,
   myStrains: state.myStrains,
-  notForMe: state.notForMe
+  notForMe: state.notForMe,
+  effects: state.effects,
+  uniqueEffect: state.uniqueEffect
 });
 
 export const mapDispatchToProps = dispatch => ({

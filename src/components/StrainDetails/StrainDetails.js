@@ -5,38 +5,41 @@ import { addToMyStrains, addToNotForMe } from '../../actions';
 
 class StrainDetails extends Component {
   state = {
-    strainInfo: {}
+    strainInfo: {},
+    desc: ''
+  };
+
+  getFlavors = exactStrain => {
+    fetch(
+      `https://strainapi.evanbusse.com/${process.env.REACT_APP_API_KEY}/strains/data/flavors/${exactStrain.id}`
+    )
+      .then(response => response.json())
+      .then(flavors =>
+        this.setState({
+          strainInfo: { ...this.state.strainInfo, flavors: flavors }
+        })
+      )
+      .catch(error => console.log(error));
+  };
+
+  getEffects = exactStrain => {
+    fetch(
+      `https://strainapi.evanbusse.com/${process.env.REACT_APP_API_KEY}/strains/data/effects/${exactStrain.id}`
+    )
+      .then(response => response.json())
+      .then(effects =>
+        this.setState({
+          strainInfo: { ...this.state.strainInfo, effects: effects }
+        })
+      )
+      .catch(error => console.log(error));
   };
 
   filterForExactStrain = strains => {
     const { name } = this.props.match.params;
     const exactStrain = strains.filter(strain => strain.name === name)[0];
-    const getFlavors = () => {
-      fetch(
-        `https://strainapi.evanbusse.com/${process.env.REACT_APP_API_KEY}/strains/data/flavors/${exactStrain.id}`
-      )
-        .then(response => response.json())
-        .then(flavors =>
-          this.setState({
-            strainInfo: { ...this.state.strainInfo, flavors: flavors }
-          })
-        )
-        .catch(error => console.log(error));
-    };
-    getFlavors();
-    const getEffects = () => {
-      fetch(
-        `https://strainapi.evanbusse.com/${process.env.REACT_APP_API_KEY}/strains/data/effects/${exactStrain.id}`
-      )
-        .then(response => response.json())
-        .then(effects =>
-          this.setState({
-            strainInfo: { ...this.state.strainInfo, effects: effects }
-          })
-        )
-        .catch(error => console.log(error));
-    };
-    getEffects();
+    this.getFlavors(exactStrain);
+    this.getEffects(exactStrain);
     return exactStrain;
   };
 
@@ -54,17 +57,23 @@ class StrainDetails extends Component {
       const strainInfo = await getStrain();
       this.setState({ strainInfo });
     }
+    fetch(
+      `https://strainapi.evanbusse.com/${process.env.REACT_APP_API_KEY}/strains/data/desc/${this.props.uniqueStrain.id}`
+    )
+      .then(response => response.json())
+      .then(desc => this.setState({ desc: desc.desc }))
+      .catch(error => console.log(error));
   }
 
   addToFavorites = strain => {
-    strain.favorite = true;
+    // strain.favorite = true;
     this.props.addToMyStrains(strain);
     // const stringifiedStrain = JSON.stringify(strain);
     // localStorage.setItem(this.props.user.name, stringifiedStrain);
   };
 
   addToDislikes = strain => {
-    strain.dislike = true;
+    // strain.dislike = true;
     this.props.addToNotForMe(strain);
   };
 
@@ -113,20 +122,22 @@ class StrainDetails extends Component {
             </article>
           </div>
           <p>{strainInfo.desc}</p>
-          <button
-            onClick={() => this.addToFavorites(strainInfo)}
-            type="button"
-            className="add-favorite"
-          >
-            Add To My Strains
-          </button>
-          <button
-            onClick={() => this.addToDislikes(strainInfo)}
-            type="button"
-            className="add-dislike"
-          >
-            Add To Not For Me
-          </button>
+          <div className="likes-container">
+            <button
+              onClick={() => this.addToFavorites(strainInfo)}
+              type="button"
+              className="likes-button add-favorite"
+            >
+              Add To My Strains
+            </button>
+            <button
+              onClick={() => this.addToDislikes(strainInfo)}
+              type="button"
+              className="likes-button add-dislike"
+            >
+              Add To Not For Me
+            </button>
+          </div>
         </section>
       );
     } else if (uniqueStrain.name) {
@@ -164,20 +175,23 @@ class StrainDetails extends Component {
               </div>
             </article>
           </div>
-          <button
-            onClick={() => this.addToFavorites(uniqueStrain)}
-            type="button"
-            className="add-favorite"
-          >
-            Add To My Strains
-          </button>
-          <button
-            onClick={() => this.addToDislikes(uniqueStrain)}
-            type="button"
-            className="add-dislike"
-          >
-            Add To Not For Me
-          </button>
+          <p>{this.state.desc}</p>
+          <div className="likes-container">
+            <button
+              onClick={() => this.addToFavorites(uniqueStrain)}
+              type="button"
+              className="likes-button add-favorite"
+            >
+              Add To My Strains
+            </button>
+            <button
+              onClick={() => this.addToDislikes(uniqueStrain)}
+              type="button"
+              className="likes-button add-dislike"
+            >
+              Add To Not For Me
+            </button>
+          </div>
         </section>
       );
     }

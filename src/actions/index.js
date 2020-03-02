@@ -27,3 +27,13 @@ export const addToNotForMe = strain => ({
   type: 'SET_DISLIKE',
   strain
 });
+
+export const setEffects = effects => ({
+  type: 'SET_EFFECTS',
+  effects
+});
+
+export const setUniqueEffect = effect => ({
+  type: 'SET_EFFECT',
+  effect
+});

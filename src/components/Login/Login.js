@@ -13,7 +13,7 @@ export class Login extends Component {
   }
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ name: event.target.value });
   };
 
   loginUser = () => {
@@ -26,11 +26,12 @@ export class Login extends Component {
         className="login-form"
         onSubmit={async e => await this.handleSubmit(e)}
       >
+        <h1 className="login-title">What's My Strain?</h1>
         <p className="error">{this.state.nameError}</p>
-        <label htmlFor="login-email">Email</label>
+        <label htmlFor="login-name">Name</label>
         <input
           onChange={this.handleChange}
-          name="name"
+          name="login-name"
           placeholder="Name"
         ></input>
         <Link className="login-link" onClick={this.loginUser} to="/">
@@ -42,8 +43,8 @@ export class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setUser: user => {
-    dispatch(setUser(user));
+  setUser: name => {
+    dispatch(setUser(name));
   }
 });
 

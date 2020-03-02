@@ -1,27 +1,31 @@
 header {
-  background-color: #fff;
-  border-bottom: 5px solid black;
+  align-items: center;
+  background-color: #284d6b;
+  border-bottom: 5px solid #fff;
   display: flex;
   justify-content: space-between;
+  padding: 1em;
   width: 100%;
 }
 
 h1 {
-  margin-left: 10em;
-}
-
-.username {
-  padding: 1em;
+  color: #fff;
+  margin: 0;
+  margin-left: 7em;
 }
 
 .nav-options {
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  width: 20em;
+}
+
+.username {
+  color: #fff;
 }
 
 .nav-link {
-  color: black;
+  color: #fff;
+  margin-right: 2em;
   text-decoration: none;
 }
