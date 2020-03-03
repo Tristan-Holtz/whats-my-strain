@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import './StrainDetails.scss';
 import { connect } from 'react-redux';
-import { addToMyStrains, addToNotForMe } from '../../actions';
+import {
+  addToMyStrains,
+  addToNotForMe,
+  removeFromFavorites,
+  removeFromDislikes
+} from '../../actions';
 import hybrid from '../../images/hybrid.jpg';
 import sativa from '../../images/sativa.jpg';
 import indica from '../../images/indica.jpg';
@@ -68,15 +73,19 @@ export class StrainDetails extends Component {
       .catch(error => console.log(error));
   }
 
-  addToFavorites = strain => {
-    if (!this.props.myStrains.includes(strain)) {
+  toggleFavorite = (strain, isFavorite) => {
+    if (!isFavorite) {
       this.props.addToMyStrains(strain);
+    } else {
+      this.props.removeFromFavorites(strain);
     }
   };
 
-  addToDislikes = strain => {
-    if (!this.props.notForMe.includes(strain)) {
+  toggleDislike = (strain, isDisliked) => {
+    if (!isDisliked) {
       this.props.addToNotForMe(strain);
+    } else {
+      this.props.removeFromDislikes(strain);
     }
   };
 
@@ -104,6 +113,8 @@ export class StrainDetails extends Component {
       );
       const medical = strainInfo.effects.medical.map(effect => `${effect},  `);
       const { race } = strainInfo;
+      const isFavorite = this.props.myStrains.includes(strainInfo);
+      const isDisliked = this.props.notForMe.includes(strainInfo);
       return (
         <section className="strain-details_section">
           <h2>{name}</h2>
@@ -136,18 +147,18 @@ export class StrainDetails extends Component {
           <p className="strain-desc">{strainInfo.desc}</p>
           <div className="likes-container">
             <button
-              onClick={() => this.addToFavorites(strainInfo)}
+              onClick={() => this.toggleFavorite(strainInfo, isFavorite)}
               type="button"
               className="likes-button add-favorite"
             >
-              Add To My Strains
+              {`${isFavorite ? 'Remove From' : 'Add To'} My Strains`}
             </button>
             <button
-              onClick={() => this.addToDislikes(strainInfo)}
+              onClick={() => this.toggleDislike(strainInfo, isDisliked)}
               type="button"
               className="likes-button add-dislike"
             >
-              Add To Not For Me
+              {`${isDisliked ? 'Remove From' : 'Add To'} Not For Me`}
             </button>
           </div>
         </section>
@@ -167,6 +178,8 @@ export class StrainDetails extends Component {
       const positives = effects.positive.map(effect => `${effect},  `);
       const negatives = effects.negative.map(effect => `${effect},  `);
       const medical = effects.medical.map(effect => `${effect},  `);
+      const isFavorite = this.props.myStrains.includes(uniqueStrain);
+      const isDisliked = this.props.notForMe.includes(uniqueStrain);
       return (
         <section className="strain-details_section">
           <h2>{name}</h2>
@@ -199,18 +212,18 @@ export class StrainDetails extends Component {
           <p>{this.state.desc}</p>
           <div className="likes-container">
             <button
-              onClick={() => this.addToFavorites(uniqueStrain)}
+              onClick={() => this.toggleFavorite(uniqueStrain, isFavorite)}
               type="button"
               className="likes-button add-favorite"
             >
-              Add To My Strains
+              {`${isFavorite ? 'Remove From' : 'Add To'} My Strains`}
             </button>
             <button
-              onClick={() => this.addToDislikes(uniqueStrain)}
+              onClick={() => this.addToDislikes(strainInfo, isDisliked)}
               type="button"
               className="likes-button add-dislike"
             >
-              Add To Not For Me
+              {`${isDisliked ? 'Remove From' : 'Add To'} Not For Me`}
             </button>
           </div>
         </section>
@@ -234,6 +247,12 @@ export const mapDispatchToProps = dispatch => ({
   },
   addToNotForMe: strain => {
     dispatch(addToNotForMe(strain));
+  },
+  removeFromDislikes: strain => {
+    dispatch(removeFromDislikes(strain));
+  },
+  removeFromFavorites: strain => {
+    dispatch(removeFromFavorites(strain));
   }
 });
 

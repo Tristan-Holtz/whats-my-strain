@@ -11,7 +11,7 @@ export const Strain = ({
   myStrains,
   notForMe,
   uniqueEffect,
-  uniqueStrain
+  searchStrain
 }) => {
   const getUniqueStrain = strain => {
     setUniqueStrain(strain);
@@ -28,9 +28,11 @@ export const Strain = ({
       });
       return acc;
     }, []);
-    if (typeof uniqueStrain === 'string') {
-      allStrains = allStrains.filter(strain => strain.name === uniqueStrain);
-      area = uniqueStrain;
+    if (searchStrain) {
+      allStrains = allStrains.filter(strain =>
+        strain.name.toLowerCase().includes(searchStrain.toLowerCase())
+      );
+      area = searchStrain;
     }
     if (category) {
       area = category;
@@ -82,7 +84,8 @@ export const mapStateToProps = state => ({
   uniqueStrain: state.uniqueStrain,
   myStrains: state.myStrains,
   notForMe: state.notForMe,
-  uniqueEffect: state.uniqueEffect
+  uniqueEffect: state.uniqueEffect,
+  searchStrain: state.searchStrain
 });
 
 export const mapDispatchToProps = dispatch => ({

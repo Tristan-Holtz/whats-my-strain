@@ -42,3 +42,13 @@ export const setSearchStrain = strain => ({
   type: 'SET_SEARCH',
   strain
 });
+
+export const removeFromFavorites = strain => ({
+  type: 'REMOVE_FAVORITE',
+  strain
+});
+
+export const removeFromDislikes = strain => ({
+  type: 'REMOVE_DISLIKE',
+  strain
+});
