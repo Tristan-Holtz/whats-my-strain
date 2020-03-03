@@ -5,11 +5,12 @@ import {
   setCategory,
   setEffects,
   setUniqueEffect,
-  setUniqueStrain
+  setUniqueStrain,
+  setSearchStrain
 } from '../../actions';
 import './CardContainer.scss';
 import Strain from '../Strain/Strain';
-import PropTypes from 'prop-types';
+import { func, object, string } from 'prop-types';
 
 export class CardContainer extends Component {
   constructor() {
@@ -45,15 +46,10 @@ export class CardContainer extends Component {
     this.props.setUniqueEffect(event.target.value);
   };
 
-  setSearchStrain = () => {
-    if (this.state.search) {
-      this.props.setUniqueStrain(this.state.search);
-      this.props.setUniqueEffect('');
-      this.props.setCategory('');
-      this.setState({ search: '' });
-    }
-    this.setState({ search: '' });
-    this.props.setUniqueStrain(this.state.search);
+  getSearchStrain = () => {
+    this.props.setSearchStrain(this.state.search);
+    this.props.setUniqueEffect('');
+    this.props.setCategory('');
   };
 
   handleChange = event => {
@@ -90,7 +86,8 @@ export class CardContainer extends Component {
                   placeholder="Strain Name..."
                 ></input>
                 <button
-                  onClick={() => this.setSearchStrain()}
+                  disabled={!this.state.search}
+                  onClick={this.getSearchStrain}
                   className="search-button"
                   type="button"
                 >
@@ -188,6 +185,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   setUniqueStrain: strain => {
     dispatch(setUniqueStrain(strain));
+  },
+  setSearchStrain: strain => {
+    dispatch(setSearchStrain(strain));
   }
 });
 
@@ -198,19 +198,19 @@ export const mapStateToProps = state => ({
 });
 
 CardContainer.propTypes = {
-  getStrainInfo: PropTypes.func,
-  selectCategory: PropTypes.func,
-  sendUniqueEffect: PropTypes.func,
-  setSearchStrain: PropTypes.func,
-  handleChange: PropTypes.func,
-  strains: PropTypes.object,
-  effects: PropTypes.object,
-  category: PropTypes.string,
-  setUniqueStrain: PropTypes.func,
-  setUniqueEffect: PropTypes.func,
-  setEffects: PropTypes.func,
-  setCategory: PropTypes.func,
-  setStrains: PropTypes.func
+  setSearchStrain: func,
+  getStrainInfo: func,
+  selectCategory: func,
+  sendUniqueEffect: func,
+  handleChange: func,
+  strains: object,
+  effects: object,
+  category: string,
+  setUniqueStrain: func,
+  setUniqueEffect: func,
+  setEffects: func,
+  setCategory: func,
+  setStrains: func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
