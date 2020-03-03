@@ -5,7 +5,12 @@ import {
   mapStateToProps,
   mapDispatchToProps
 } from './StrainDetails';
-import { addToMyStrains, addToNotForMe } from '../../actions';
+import {
+  addToMyStrains,
+  addToNotForMe,
+  removeFromFavorites,
+  removeFromDislikes
+} from '../../actions';
 
 describe('strainDetails', () => {
   let wrapper;
@@ -13,6 +18,8 @@ describe('strainDetails', () => {
   beforeEach(() => {
     mockProps = {
       match: { params: { name: 'Durban' } },
+      removeFromFavorites: jest.fn(),
+      removeFromDislikes: jest.fn(),
       addToNotForMe: jest.fn(),
       addToMyStrains: jest.fn(),
       uniqueStrain: {
@@ -82,7 +89,7 @@ describe('strainDetails', () => {
     });
   });
 
-  describe('addToFavorites', () => {
+  describe('toggleFavorite', () => {
     let strain;
     beforeEach(() => {
       strain = {
@@ -98,7 +105,7 @@ describe('strainDetails', () => {
       };
     });
     it('should call addToMyStrains if the strain is not there already', () => {
-      wrapper.instance().addToFavorites(strain);
+      wrapper.instance().toggleFavorite(strain, false);
 
       expect(mockProps.addToMyStrains).toHaveBeenCalledWith(strain);
     });
@@ -129,7 +136,7 @@ describe('strainDetails', () => {
           id: 2
         }
       ];
-      wrapper.instance().addToFavorites(strain);
+      wrapper.instance().toggleFavorite(strain, true);
       expect(mockProps.myStrains).toEqual(expected);
     });
   });
@@ -150,7 +157,7 @@ describe('strainDetails', () => {
       };
     });
     it('should call addToNotForMe if the strain is not there already', () => {
-      wrapper.instance().addToDislikes(strain);
+      wrapper.instance().toggleDislike(strain, false);
 
       expect(mockProps.addToNotForMe).toHaveBeenCalledWith(strain);
     });
@@ -181,7 +188,7 @@ describe('strainDetails', () => {
           id: 2
         }
       ];
-      wrapper.instance().addToDislikes(strain);
+      wrapper.instance().toggleDislike(strain);
 
       expect(mockProps.notForMe).toEqual(expected);
     });
