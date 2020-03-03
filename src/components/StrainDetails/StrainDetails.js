@@ -219,7 +219,7 @@ export class StrainDetails extends Component {
               {`${isFavorite ? 'Remove From' : 'Add To'} My Strains`}
             </button>
             <button
-              onClick={() => this.addToDislikes(strainInfo, isDisliked)}
+              onClick={() => this.toggleDislike(uniqueStrain, isDisliked)}
               type="button"
               className="likes-button add-dislike"
             >
