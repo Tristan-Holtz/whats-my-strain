@@ -7,6 +7,7 @@ import userReducer from './userReducer';
 import dislikeReducer from './dislikeReducer';
 import effectsReducer from './effectsReducer';
 import uniqueEffectReducer from './uniqueEffectReducer';
+import searchReducer from './searchReducer';
 
 const rootReducer = combineReducers({
   strains: strainReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   name: userReducer,
   notForMe: dislikeReducer,
   effects: effectsReducer,
-  uniqueEffect: uniqueEffectReducer
+  uniqueEffect: uniqueEffectReducer,
+  searchStrain: searchReducer
 });
 
 export default rootReducer;

@@ -37,3 +37,8 @@ export const setUniqueEffect = effect => ({
   type: 'SET_EFFECT',
   effect
 });
+
+export const setSearchStrain = strain => ({
+  type: 'SET_SEARCH',
+  strain
+});
