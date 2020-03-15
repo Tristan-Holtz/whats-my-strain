@@ -40,6 +40,7 @@ export class CardContainer extends Component {
 
   selectCategory = category => {
     this.props.setCategory(category);
+    this.props.setUniqueEffect('');
   };
 
   sendUniqueEffect = event => {

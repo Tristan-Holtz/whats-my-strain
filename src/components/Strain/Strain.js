@@ -49,7 +49,7 @@ export const Strain = ({
       const splitEffect = uniqueEffect.split('_');
       const effectType = splitEffect[0];
       const effectName = splitEffect[1];
-      area = effectName;
+      area = `${category}-${effectType}-${effectName}`.toLowerCase();
       allStrains = allStrains.filter(strain =>
         strain.effects[effectType].includes(effectName)
       );
@@ -72,7 +72,16 @@ export const Strain = ({
 
   return (
     <section>
-      <h2 className="area">{area}</h2>
+      <div className="category-container">
+        <h2 className="area">{area}</h2>
+        <button
+          className="all-strains_button"
+          type="button"
+          onClick={() => window.location.reload()}
+        >
+          Back To All Strains
+        </button>
+      </div>
       <section className="strain-container">{cards}</section>
     </section>
   );
