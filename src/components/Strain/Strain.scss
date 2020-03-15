@@ -40,3 +40,14 @@
   margin: 0;
   text-align: center;
 }
+
+.category-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-strains_button {
+  border-radius: 5px;
+  height: 2.5em;
+  margin: 2em;
+}
