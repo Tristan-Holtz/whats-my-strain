@@ -1,7 +1,7 @@
 .strain-card {
   align-items: center;
   background: bottom -10px right -10px no-repeat
-      url('../../images/leaf-icon-50-opacity.png'),
+      url("../../images/leaf-icon-50-opacity.png"),
     #203d54;
   background-size: 50px;
   border: 1px solid #adbcc7;
@@ -29,6 +29,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
+  height: 40em;
+  overflow-x: scroll;
   padding: 1em;
   width: 100%;
 }
